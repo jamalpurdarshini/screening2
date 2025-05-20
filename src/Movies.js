@@ -1,35 +1,6 @@
 
-
-
-
-// import React from "react";
-// import Movies from "Movies.css"
-// function Movies({ movie, liked, disliked, handleLike, handleDislike, showActions }) {
-//   return (
-//     <div style={{ border: "1px solid #aaa", padding: "1rem", marginBottom: "1rem" }}>
-//       <h3>{movie.title}</h3>
-//       <img src={movie.image} alt={movie.title} width="200" />
-//       <p>{movie.description}</p>
-//       <p>⭐ Rating: {movie.rating}</p>
-
-//       {showActions && (
-//         <>
-//           <button onClick={handleLike}>Like</button>{" "}
-//           <button onClick={handleDislike}>Dislike</button>
-//           <div>
-//             {liked && <span>✅ Liked</span>}
-//             {disliked && <span>❌ Disliked</span>}
-//           </div>
-//         </>
-//       )}
-//     </div>
-//   );
-// }
-
-// export default Movies;
-
 import React from "react";
-import "./Movies.css"; // ✅ Import the CSS
+import "./Movies.css";
 
 function Movies({ movie, liked, disliked, handleLike, handleDislike, showActions }) {
   return (
@@ -42,8 +13,20 @@ function Movies({ movie, liked, disliked, handleLike, handleDislike, showActions
       {showActions && (
         <>
           <div className="button-group">
-            <button onClick={handleLike} className="like-button">Like</button>
-            <button onClick={handleDislike} className="dislike-button">Dislike</button>
+            <button
+              onClick={handleLike}
+              className="like-button"
+              disabled={liked || disliked} // disable if already liked or disliked
+            >
+              Like
+            </button>
+            <button
+              onClick={handleDislike}
+              className="dislike-button"
+              disabled={liked || disliked} // disable if already liked or disliked
+            >
+              Dislike
+            </button>
           </div>
           <div className="action-status">
             {liked && <span className="liked-label">✅ Liked</span>}
